@@ -21,8 +21,9 @@ import time as tiempo
 
 def testGrafo():
     
-    grafo = ig.create_instance(100)
+    grafo = ig.create_instance(20)
     g = GRP.WeightedGraph(grafo)    # Crear el grafo con el diccionario de ejemplo
+    
     while (len(g.isolatedNodes())>0):
         grafo = ig.create_instance(50);
         g = GRP.WeightedGraph(grafo); 
@@ -47,6 +48,7 @@ def testGrafo():
     path, weight = g.shortestPath('1', '10')
     #Busqueda de profundidad 
     print("DFS('10'):", g.DFS('1')) 
+    print("GLS('10'):", g.GLS('1'))
     tiempo_final = tiempo.time()
     tiempo_ejecucion = tiempo_final - tiempo_inicio
     print('Tiempo de ejecución: ', tiempo_ejecucion)

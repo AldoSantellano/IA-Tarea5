@@ -16,7 +16,7 @@ class WeightedGraph(GR.Graph):
     def DFS(self, node):
         visited = [node]
         stack = [node]
-        x = 0;
+        x = 0
         while stack:
             current = stack.pop()
             if current not in visited:
@@ -29,6 +29,39 @@ class WeightedGraph(GR.Graph):
                     stack.append(e)
                     
         return visited, 'Costo: ', x
+    
+    def GLS(self, node):
+        visited = [node]
+        stack = []
+        for e, _ in self.graph[node]:
+                if e not in visited:
+                    stack.append(e)
+        x = 0
+        mejorValor = 999
+        mejorNodo = '0'
+        while stack:
+            while stack:
+                current = stack.pop()
+                if(current == '10'):
+                    visited.append(current)
+                    x += _
+                    break
+                if _ < mejorValor and current not in visited and current != '10':
+                    mejorValor = _
+                    mejorNodo = e
+            visited.append(mejorNodo)
+            x += mejorValor
+            
+            if(mejorNodo == '10' or current == '10'):
+                break
+
+            for e, _ in self.graph[mejorNodo]:
+                if e not in visited:
+                    stack.append(e)
+            mejorValor = 999
+            mejorNodo = '0'
+
+        return visited,  'Costo: ', x
     
     # Devuelve el camino más corto entre dos nodos
     # camino más corto == el de menor peso
