@@ -44,10 +44,11 @@ def testGrafo():
     
         
      # Obtener el camino más corto entre dos nodos
-    tiempo_inicio = tiempo.time()
+    
     path, weight = g.shortestPath('1', '10')
-    #Busqueda de profundidad 
-    print("DFS('10'):", g.DFS('1')) 
+
+    #Busqueda de profundidad
+    tiempo_inicio = tiempo.time() 
     print("GLS('10'):", g.GLS('1'))
     tiempo_final = tiempo.time()
     tiempo_ejecucion = tiempo_final - tiempo_inicio

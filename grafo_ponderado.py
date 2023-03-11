@@ -15,10 +15,10 @@ class WeightedGraph(GR.Graph):
     # Recorrido en profundidad (Depth First Search)
     def DFS(self, node):
         visited = [node]
-        stack = [node]
+        nodes = [node]
         x = 0
-        while stack:
-            current = stack.pop()
+        while nodes:
+            current = nodes.pop()
             if current not in visited:
                 visited.append(current)
                 x += _
@@ -26,40 +26,49 @@ class WeightedGraph(GR.Graph):
                 break
             for e, _ in self.graph[current]:    # para cada nodo adyacente
                 if e not in visited:
-                    stack.append(e)
+                    nodes.append(e)
                     
         return visited, 'Costo: ', x
     
     def GLS(self, node):
         visited = [node]
-        stack = []
+        nodes = []
+        weight = []
         for e, _ in self.graph[node]:
                 if e not in visited:
-                    stack.append(e)
+                    nodes.append(e)
+                    weight.append(_)
         x = 0
         mejorValor = 999
         mejorNodo = '0'
-        while stack:
-            while stack:
-                current = stack.pop()
+        while nodes:
+            skip = 0
+            while nodes:
+                current = nodes.pop()
+                currentV = weight.pop()
                 if(current == '10'):
                     visited.append(current)
-                    x += _
+                    x += currentV
+                    skip = 1
                     break
-                if _ < mejorValor and current not in visited and current != '10':
-                    mejorValor = _
-                    mejorNodo = e
-            visited.append(mejorNodo)
-            x += mejorValor
+                if (current not in visited):
+                    if currentV < mejorValor:
+                        mejorValor = currentV
+                        mejorNodo = current
+            if(skip == 0):
+                visited.append(mejorNodo)
+                x += mejorValor 
             
             if(mejorNodo == '10' or current == '10'):
                 break
 
             for e, _ in self.graph[mejorNodo]:
                 if e not in visited:
-                    stack.append(e)
+                    nodes.append(e)
+                    weight.append(_)
             mejorValor = 999
             mejorNodo = '0'
+            skip = 0
 
         return visited,  'Costo: ', x
     

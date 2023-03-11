@@ -12,7 +12,7 @@ def create_instance(num_nodos):
    
         lista_tuplas = [];
         for j in range(0,len(lista_adyacencia)):
-            lista_tuplas.append((str(lista_adyacencia[j]), random.randint(1,20)))
+            lista_tuplas.append((str(lista_adyacencia[j]), random.randint(1,100)))
 
         x = str(i)
         instance[x] = lista_tuplas;
